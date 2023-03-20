@@ -1,19 +1,28 @@
-import { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { memo, useEffect } from 'react';
+import { SearchBook } from 'features/SearchBook/ui/SearchBook';
+import { BookList, getBooksIsLoading } from 'entities/Book';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { fetchBooksData } from 'entities/Book/model/service/fetchBooksData';
+import { Loader } from 'shared/ui/Loader/Loader';
 import cls from './MainPage.module.scss';
 
-interface MainPageProps {
-    className?: string;
-}
+export const MainPage = memo(() => {
+    const dispatch = useAppDispatch();
+    const isLoading = useSelector(getBooksIsLoading);
 
-export const MainPage = memo((props: MainPageProps) => {
-    const {
-        className,
-    } = props;
+    useEffect(() => {
+        dispatch(fetchBooksData());
+    }, [dispatch]);
 
     return (
-        <div className={classNames(cls.MainPage, {}, [className])}>
-            Main Page
+        <div>
+            <SearchBook className={cls.search} />
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <BookList />
+            )}
         </div>
     );
 });

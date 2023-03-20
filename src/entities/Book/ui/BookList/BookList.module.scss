@@ -1,0 +1,10 @@
+.BookList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.totalItems {
+    text-align: center;
+    margin-bottom: 10px;
+}
