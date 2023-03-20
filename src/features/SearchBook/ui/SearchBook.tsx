@@ -32,6 +32,7 @@ export const SearchBook = memo((props: SearchBookProps) => {
                     className={cls.input}
                     value={value || ''}
                     onChange={onChangeValue}
+                    placeholder="find book..."
                 />
                 <Button
                     theme={ButtonTheme.BORDERED}

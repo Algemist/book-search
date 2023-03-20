@@ -32,9 +32,12 @@ export const BookCard = memo((props: BookCardProps) => {
                 )}
                 {data?.volumeInfo.authors && (
                     <div className={cls.content}>
-                        Authors:
-                        {' '}
-                        {data?.volumeInfo.authors?.join(',')}
+                        {`Authors: ${data?.volumeInfo.authors?.join(',')}`}
+                    </div>
+                )}
+                {data?.volumeInfo.categories && (
+                    <div className={cls.content}>
+                        {`Categories ${data.volumeInfo.categories[0]}`}
                     </div>
                 )}
             </div>

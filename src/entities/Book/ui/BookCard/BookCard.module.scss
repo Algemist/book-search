@@ -11,3 +11,15 @@
 .content {
     text-align: center;
 }
+
+@media (min-width: 576px) {
+    .BookCard {
+        width: 48%;
+    }
+}
+
+@media (min-width: 1290px) {
+    .BookCard {
+        width: 32%;
+    }
+}

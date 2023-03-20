@@ -55,11 +55,12 @@ export const Input = memo((props: InputProps) => {
             type={type}
             value={value}
             onChange={onChangeHandler}
-            className={classNames(cls.input, {}, [className])}
+            className={classNames(cls.Input, {}, [className])}
             onFocus={onFocus}
             onBlur={onBlur}
             ref={ref}
             readOnly={readOnly}
+            placeholder={placeholder}
             {...others}
         />
     );
