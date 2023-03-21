@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { Book } from 'entities/Book/model/types/book';
-import { getBooksData, getBooksTotalItems } from '../../model/selectors/bookselectors';
+import { getBooksData, getBooksError, getBooksTotalItems } from '../../model/selectors/bookselectors';
 import { BookCard } from '../BookCard/BookCard';
 import cls from './BookList.module.scss';
 
@@ -17,6 +17,15 @@ export const BookList = memo((props: BookListProps) => {
 
     const data = useSelector(getBooksData);
     const totalItems = useSelector(getBooksTotalItems);
+    const error = useSelector(getBooksError);
+
+    if (error) {
+        return (
+            <div>
+                Something went wrong... Pls try again
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(cls.BookList, {}, [className])}>
@@ -29,7 +38,7 @@ export const BookList = memo((props: BookListProps) => {
                 {data && (
                     data.map((book) => (
                         <BookCard
-                            key={book.id}
+                            key={book.etag}
                             data={book as Book}
                         />
                     ))

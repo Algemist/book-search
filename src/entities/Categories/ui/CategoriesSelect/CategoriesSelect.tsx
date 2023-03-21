@@ -2,7 +2,6 @@ import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectOptions } from 'shared/ui/Select/Select';
 import { Categories } from '../../model/types/categories';
-import cls from './CategoriesSelect.module.scss';
 
 interface CategoriesSelectProps {
     className?: string;
@@ -37,7 +36,7 @@ export const CategoriesSelect = memo((props: CategoriesSelectProps) => {
             value={value}
             onChange={onChangeHandler}
             label="Categories:"
-            className={classNames(cls.CategoriesSelect, {}, [className])}
+            className={classNames('', {}, [className])}
         />
     );
 });

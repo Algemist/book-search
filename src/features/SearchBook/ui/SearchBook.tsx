@@ -4,9 +4,9 @@ import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { fetchBooksData } from 'entities/Book/model/service/fetchBooksData';
 import { Categories, CategoriesSelect } from 'entities/Categories';
 import { Sort, SortSelect } from 'entities/Sort';
+import { fetchBooksData, getBooksIsLoading } from 'entities/Book';
 import { SearchBookActions } from '../model/slice/SearchBookSlice';
 import { getSearchBookCategory, getSearchBookSort, getSearchBookValue } from '../model/selectors/searchBookSelectors';
 import cls from './SearchBook.module.scss';
@@ -24,6 +24,7 @@ export const SearchBook = memo((props: SearchBookProps) => {
     const value = useSelector(getSearchBookValue);
     const category = useSelector(getSearchBookCategory);
     const sort = useSelector(getSearchBookSort);
+    const isLoading = useSelector(getBooksIsLoading);
 
     const onChangeValue = useCallback((value: string) => {
         dispatch(SearchBookActions.setValue(value));
@@ -31,9 +32,9 @@ export const SearchBook = memo((props: SearchBookProps) => {
 
     const onClick = useCallback(() => {
         if (value) {
-            dispatch(fetchBooksData(value));
+            dispatch(fetchBooksData({ value, category, sort }));
         }
-    }, [dispatch, value]);
+    }, [category, dispatch, sort, value]);
 
     const onChangeCategory = useCallback((category?: Categories) => {
         dispatch(SearchBookActions.setCategory(category || Categories.ALL));
@@ -69,6 +70,7 @@ export const SearchBook = memo((props: SearchBookProps) => {
                     theme={ButtonTheme.BORDERED}
                     className={cls.button}
                     onClick={onClick}
+                    disabled={isLoading}
                 >
                     Search
                 </Button>

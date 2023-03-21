@@ -4,7 +4,6 @@ import { Sort } from 'entities/Sort';
 import { SearchBookSchema } from '../types/searchBook';
 
 const initialState: SearchBookSchema = {
-    isLoading: false,
     value: '',
     categories: Categories.ALL,
     sort: Sort.RELEVANCE,

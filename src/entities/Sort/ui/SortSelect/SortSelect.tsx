@@ -2,7 +2,6 @@ import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectOptions } from 'shared/ui/Select/Select';
 import { Sort } from '../../model/types/sort';
-import cls from './SortSelect.module.scss';
 
 interface CategoriesSelectProps {
     className?: string;
@@ -32,7 +31,7 @@ export const SortSelect = memo((props: CategoriesSelectProps) => {
             value={value}
             onChange={onChangeHandler}
             label="Sort:"
-            className={classNames(cls.CategoriesSelect, {}, [className])}
+            className={classNames('', {}, [className])}
         />
     );
 });

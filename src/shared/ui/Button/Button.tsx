@@ -24,6 +24,7 @@ export const Button = memo((props: ButtonProps) => {
 
     const mods: Mods = {
         [cls[theme]]: true,
+        [cls.disabled]: disabled,
     };
 
     return (

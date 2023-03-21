@@ -1,21 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
 import { API_KEY } from 'shared/api/config';
-import { BookData } from '../types/BooksSchema';
+import { Book } from 'entities/Book/model/types/book';
 
-type Data = {value: string, category: string, sort: string}
-
-export const fetchBooksData = createAsyncThunk<BookData, Data, ThunkConfig<string>>(
-    'books/fetchBooksData',
-    async (data, thunkAPI) => {
+export const fetchBookDetails = createAsyncThunk<Book, string, ThunkConfig<string>>(
+    'books/fetchBookDetails',
+    async (bookId, thunkAPI) => {
         const {
             extra,
             rejectWithValue,
         } = thunkAPI;
 
         try {
-            const url = `/v1/volumes?q=${data.value}+subject: ${data.category}&maxResults=30&orderBy=${data.sort}&key=${API_KEY}`;
-            const response = await extra.api.get<BookData>(url);
+            const url = `/v1/volumes/${bookId}`;
+            const response = await extra.api.get<Book>(url);
             if (!response.data) {
                 throw new Error();
             }

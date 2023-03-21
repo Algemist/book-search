@@ -10,4 +10,5 @@ export interface BooksSchema {
     isLoading: boolean;
     error?: string;
     data?: BookData;
+    detailBook?: Book;
 }

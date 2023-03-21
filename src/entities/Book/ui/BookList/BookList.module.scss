@@ -10,9 +10,7 @@
 }
 
 @media (min-width: 576px) {
-
     .list {
-        flex-wrap: wrap;
-        flex-direction: row;
+        flex-flow: wrap row;
     }
 }
