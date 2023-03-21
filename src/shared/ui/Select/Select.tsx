@@ -2,7 +2,7 @@ import { ChangeEvent, memo, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 
-interface SelectOptions {
+export interface SelectOptions {
     value: string;
     content: string;
 }
@@ -42,7 +42,7 @@ export const Select = memo((props: SelectProps) => {
         <div className={classNames(cls.Wrapper, {}, [className])}>
             {label && (
                 <span className={classNames(cls.label, {}, [className])}>
-                    {`${label}>`}
+                    {`${label} `}
                 </span>
             )}
             <select

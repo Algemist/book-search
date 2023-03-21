@@ -11,10 +11,6 @@ export const MainPage = memo(() => {
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getBooksIsLoading);
 
-    useEffect(() => {
-        dispatch(fetchBooksData());
-    }, [dispatch]);
-
     return (
         <div>
             <SearchBook className={cls.search} />

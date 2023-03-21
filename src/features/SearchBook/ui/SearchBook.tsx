@@ -4,8 +4,11 @@ import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getSearchBookValue } from 'features/SearchBook/model/selectors/searchBookSelectors';
-import { SearchBookActions } from 'features/SearchBook';
+import { fetchBooksData } from 'entities/Book/model/service/fetchBooksData';
+import { Categories, CategoriesSelect } from 'entities/Categories';
+import { Sort, SortSelect } from 'entities/Sort';
+import { SearchBookActions } from '../model/slice/SearchBookSlice';
+import { getSearchBookCategory, getSearchBookSort, getSearchBookValue } from '../model/selectors/searchBookSelectors';
 import cls from './SearchBook.module.scss';
 
 interface SearchBookProps {
@@ -19,9 +22,25 @@ export const SearchBook = memo((props: SearchBookProps) => {
 
     const dispatch = useAppDispatch();
     const value = useSelector(getSearchBookValue);
+    const category = useSelector(getSearchBookCategory);
+    const sort = useSelector(getSearchBookSort);
 
     const onChangeValue = useCallback((value: string) => {
         dispatch(SearchBookActions.setValue(value));
+    }, [dispatch]);
+
+    const onClick = useCallback(() => {
+        if (value) {
+            dispatch(fetchBooksData(value));
+        }
+    }, [dispatch, value]);
+
+    const onChangeCategory = useCallback((category?: Categories) => {
+        dispatch(SearchBookActions.setCategory(category || Categories.ALL));
+    }, [dispatch]);
+
+    const onChangeSort = useCallback((sort?: Sort) => {
+        dispatch(SearchBookActions.setSort(sort || Sort.RELEVANCE));
     }, [dispatch]);
 
     return (
@@ -34,9 +53,22 @@ export const SearchBook = memo((props: SearchBookProps) => {
                     onChange={onChangeValue}
                     placeholder="find book..."
                 />
+                <div className={cls.selects}>
+                    <CategoriesSelect
+                        onChange={onChangeCategory}
+                        value={category}
+                        className={cls.categorySelect}
+                    />
+                    <SortSelect
+                        onChange={onChangeSort}
+                        value={sort}
+                        className={cls.sortSelect}
+                    />
+                </div>
                 <Button
                     theme={ButtonTheme.BORDERED}
                     className={cls.button}
+                    onClick={onClick}
                 >
                     Search
                 </Button>
