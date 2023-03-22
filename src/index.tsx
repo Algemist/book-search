@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from 'app/providers/StoreProvider';
+import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 import App from './app/App';
 import './app/styles/index.scss';
 
@@ -11,7 +12,9 @@ root.render(
     <StrictMode>
         <StoreProvider>
             <BrowserRouter>
-                <App />
+                <ErrorBoundary>
+                    <App />
+                </ErrorBoundary>
             </BrowserRouter>
         </StoreProvider>
     </StrictMode>,

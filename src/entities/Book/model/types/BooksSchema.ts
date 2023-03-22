@@ -9,6 +9,7 @@ export type BookData = {
 export interface BooksSchema {
     isLoading: boolean;
     error?: string;
-    data?: BookData;
+    data: Book[];
+    totalItems?: number;
     detailBook?: Book;
 }

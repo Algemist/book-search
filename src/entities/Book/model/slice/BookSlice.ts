@@ -1,20 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BookData, BooksSchema } from 'entities/Book/model/types/BooksSchema';
-import { fetchBookDetails } from 'entities/Book';
-import { Book } from 'entities/Book/model/types/book';
+import { BookData, BooksSchema } from '../types/BooksSchema';
+import { fetchBookDetails } from '../service/fetchBookDetails';
+import { Book } from '../types/book';
 import { fetchBooksData } from '../service/fetchBooksData';
 
 const initialState: BooksSchema = {
     isLoading: false,
     error: undefined,
-    data: undefined,
+    data: [],
+    totalItems: undefined,
     detailBook: undefined,
 };
 
 export const BookSlice = createSlice({
     name: 'Book',
     initialState,
-    reducers: {},
+    reducers: {
+        setData: (state) => {
+            state.data = [];
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBooksData.pending, (state) => {
@@ -23,7 +28,8 @@ export const BookSlice = createSlice({
             })
             .addCase(fetchBooksData.fulfilled, (state, action: PayloadAction<BookData>) => {
                 state.isLoading = false;
-                state.data = action.payload;
+                state.data = [...state.data, ...action.payload.items];
+                state.totalItems = action.payload.totalItems;
             })
             .addCase(fetchBooksData.rejected, (state, action) => {
                 state.isLoading = false;
