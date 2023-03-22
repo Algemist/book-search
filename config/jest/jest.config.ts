@@ -28,7 +28,6 @@ export default {
     ],
     moduleDirectories: [
         'node_modules',
-        'src',
     ],
     modulePaths: [
         '<rootDir>src',
@@ -48,14 +47,12 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTest.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
-
     // The directory where Jest should output its coverage files
     // coverageDirectory: undefined,
 
