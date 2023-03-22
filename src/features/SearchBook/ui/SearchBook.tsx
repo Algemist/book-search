@@ -50,6 +50,7 @@ export const SearchBook = memo((props: SearchBookProps) => {
     const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             if (value) {
+                dispatch(BookActions.setData());
                 dispatch(fetchBooksData({
                     value, category, sort, page: 0,
                 }));

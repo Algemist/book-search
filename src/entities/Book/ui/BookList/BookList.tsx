@@ -41,7 +41,7 @@ export const BookList = memo((props: BookListProps) => {
         setPage(page + 1);
     }, [category, dispatch, page, sort, value]);
 
-    if (error) {
+    if (error && !data) {
         return (
             <div>
                 Something went wrong... Pls try again
@@ -67,7 +67,7 @@ export const BookList = memo((props: BookListProps) => {
                 </div>
             )}
             {isLoading && (<div className={cls.loader}><Loader /></div>)}
-            {data.length !== 0 && (
+            {(data.length !== 0 && error !== 'end') && (
                 <Button
                     theme={ButtonTheme.BORDERED}
                     onClick={onClick}

@@ -27,9 +27,13 @@ export const BookSlice = createSlice({
                 state.error = undefined;
             })
             .addCase(fetchBooksData.fulfilled, (state, action: PayloadAction<BookData>) => {
-                state.isLoading = false;
-                state.data = [...state.data, ...action.payload.items];
-                state.totalItems = action.payload.totalItems;
+                if (action.payload.items) {
+                    state.isLoading = false;
+                    state.data = [...state.data, ...action.payload.items];
+                    state.totalItems = action.payload.totalItems;
+                } else {
+                    state.error = 'end';
+                }
             })
             .addCase(fetchBooksData.rejected, (state, action) => {
                 state.isLoading = false;
