@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
-import { API_KEY } from 'shared/api/config';
 import { Book } from 'entities/Book/model/types/book';
 
 export const fetchBookDetails = createAsyncThunk<Book, string, ThunkConfig<string>>(

@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { StateSchema } from 'app/providers/StoreProvider';
 import {
     getBookDetails, getBooksData, getBooksError, getBooksIsLoading, getBooksTotalItems,
 } from './bookselectors';

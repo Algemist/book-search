@@ -5,4 +5,8 @@ export const URL = ' https://www.googleapis.com/books';
 
 export const $api = axios.create({
     baseURL: URL,
+    params: {
+        key: API_KEY,
+        maxResults: 30,
+    },
 });

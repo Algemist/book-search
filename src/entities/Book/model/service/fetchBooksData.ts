@@ -14,7 +14,7 @@ export const fetchBooksData = createAsyncThunk<BookData, Data, ThunkConfig<strin
         } = thunkAPI;
 
         try {
-            const url = `/v1/volumes?q=${data.value}+subject: ${data.category}&startIndex=${data.page}&maxResults=10&orderBy=${data.sort}&key=${API_KEY}`;
+            const url = `/v1/volumes?q=${data.value}+subject: ${data.category}&startIndex=${data.page}&orderBy=${data.sort}&key=${API_KEY}`;
             const response = await extra.api.get<BookData>(url);
             if (!response.data.items) {
                 throw new Error('end');

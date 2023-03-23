@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { Book } from 'entities/Book/model/types/book';
@@ -19,7 +19,7 @@ interface BookListProps {
     className?: string;
 }
 
-export const BookList = memo((props: BookListProps) => {
+export const BookList = (props: BookListProps) => {
     const {
         className,
     } = props;
@@ -77,4 +77,4 @@ export const BookList = memo((props: BookListProps) => {
             )}
         </div>
     );
-});
+};

@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { StateSchema } from 'app/providers/StoreProvider';
 
 export const getSearchBookValue = (state: StateSchema) => state.searchBook.value;
 export const getSearchBookCategory = (state: StateSchema) => state.searchBook.categories;

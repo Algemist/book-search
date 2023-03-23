@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { StateSchema } from 'app/providers/StoreProvider';
 
 export const getBooksIsLoading = (state: StateSchema) => state.books.isLoading;
 export const getBooksData = (state: StateSchema) => state.books.data;

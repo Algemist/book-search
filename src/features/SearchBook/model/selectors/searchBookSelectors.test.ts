@@ -1,6 +1,6 @@
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { Categories } from 'entities/Categories';
 import { Sort } from 'entities/Sort';
+import { StateSchema } from 'app/providers/StoreProvider';
 import { getSearchBookCategory, getSearchBookSort, getSearchBookValue } from './searchBookSelectors';
 
 describe('searchBookSelectors.test', () => {
