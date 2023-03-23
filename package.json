@@ -1,8 +1,9 @@
 {
   "name": "test",
   "version": "1.0.0",
-  "description": "",
+  "description": "google books API",
   "main": "index.js",
+  "homepage": "https://algemist.github.io/book-search",
   "scripts": {
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",

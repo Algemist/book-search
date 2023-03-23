@@ -11,7 +11,7 @@ const root = createRoot(document.getElementById('root')!);
 root.render(
     <StrictMode>
         <StoreProvider>
-            <BrowserRouter>
+            <BrowserRouter basename="/book-search">
                 <ErrorBoundary>
                     <App />
                 </ErrorBoundary>
