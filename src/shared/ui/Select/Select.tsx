@@ -27,10 +27,11 @@ export const Select = memo((props: SelectProps) => {
         <option
             value={opt.value}
             key={opt.value}
+            data-testid={`${value}-select-option`}
         >
             {opt.content}
         </option>
-    )), [options]);
+    )), [options, value]);
 
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         onChange?.(e.target.value);

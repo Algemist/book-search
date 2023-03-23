@@ -47,6 +47,7 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTest.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
+        axios: 'axios/dist/node/axios.cjs',
     },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
