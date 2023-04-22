@@ -2,6 +2,8 @@
 
 React spa with [Google books API](https://developers.google.com/books?hl=en)
 
+view deployment: [https://algemist.github.io/book-search/](https://algemist.github.io/book-search/)
+
 ## What can be seen in the project
 application can perform full-text searches and retrieve book information
 
